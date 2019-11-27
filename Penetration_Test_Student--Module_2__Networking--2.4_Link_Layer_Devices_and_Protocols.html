@@ -1,0 +1,51 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>2.4 Link Layer Devices and Protocols</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body><div class="main"><div class="tree">
+<p><strong>Index</strong></p>
+<p><a href="Penetration_Test_Student.html">Penetration Test Student</a></p>
+
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking.html">Module 2 | Networking</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.1_Protocols.html">2.1 Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.2_Internet_Protocol_(IP).html">2.2 Internet Protocol (IP)</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.3_Routing.html">2.3 Routing</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.4_Link_Layer_Devices_and_Protocols.html">2.4 Link Layer Devices and Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.5_TCP_and_UDP.html">2.5 TCP and UDP</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.6_Firewalls_and_Network_Defense.html">2.6 Firewalls and Network Defense</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.7_DNS.html">2.7 DNS</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.8_Wireshark.html">2.8 Wireshark</a></li>
+</ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications.html">Module 3 | Web Applications</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.1_Introduction.html">3.1 Introduction</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.2_HTTP_Protocol_Basics.html">3.2 HTTP Protocol Basics</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.3_HTTP_Cookies.html">3.3 HTTP Cookies</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.4_HTTP_Sessions.html">3.4 HTTP Sessions</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.5_Same_Origin_Policy.html">3.5 Same Origin Policy</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.6_Burp_Suite.html">3.6 Burp Suite</a></li>
+</ol>
+</ol>
+<p><a href="Commands.html">Commands</a></p>
+
+<ol>
+<li><a href="Commands--ARP.html">ARP</a></li>
+<li><a href="Commands--Burpsuite.html">Burpsuite</a></li>
+<li><a href="Commands--Netcat.html">Netcat</a></li>
+<li><a href="Commands--Netstat.html">Netstat</a></li>
+<li><a href="Commands--Routing_Table_Commands.html">Routing Table Commands</a></li>
+<li><a href="Commands--Wireshark.html">Wireshark</a></li>
+</ol>
+<p><a href="Hera_Labs_Notes.html">Hera Labs Notes</a></p>
+
+<ol>
+<li><a href="Hera_Labs_Notes--Hidden_Server_Workflow.html">Hidden Server Workflow</a></li>
+<li><a href="Hera_Labs_Notes--Data_Exfiltration.html">Data Exfiltration</a></li>
+</ol></div>
+<div class="page"><h1><b><u>2.4 Link Layer Devices and Protocols</u></b></h1><br /><strong><h3>Link Layer Devices and Protocols</h3></strong><br /><br />• Packet forwarding also happens in the lowest layer of the TCP/IP stack - link layer<br />• Link layer devices and protocols only deal with next hops<br /><br /><strong><h3>Link Layer Devices</h3></strong><br />• Hubs and switches are network devices that forward FRAMES (layer 2 packets) on a local network<br />• Work with link layer network addresses/MAC<br />• IP addresses are Layer 3 addressing schemes used to identify a host in a network, while MAC addresses identify network cards (Layer 2)<br />• MAC (Media Access Control) is also known as the physical address<br />   ◇ 48 bits long (6 bytes), and are in hexadecimal form (HEX)<br />   ◇ To identify, use<br />      ▪ ipconfig /all on Windows<br />      ▪ ifconfig on *nix systems<br />      ▪ ip addr on Linux<br />   ◇ Every host on a network has a MAC and IP address<br />   ◇ If Workstation A wants to send a packet to Workstation B, the following occurs:<br />      ▪ Workstation A creates a packet with<br />         - Destination IP address of workstation B in the IP header<br />         - Destination MAC address of the router in the link layer header of the frame<br />         - Source IP address of Workstation A<br />         - Source MAC address of workstation A<br />      ▪ Router takes the packet and forwards it to B's network, rewriting the packet's MAC addresses<br />         - Destination MAC address is B's<br />         - Source MAC address is now the router<br />         - Router does not change source and destination IP addresses<br />   ◇ When a device sends a packet:<br />      ▪ Destination MAC address is the MAC address of the NEXT HOP; ensures that locally, the network knows where to forward the packet<br />      ▪ Destination IP address is the address of the destination host; global information and remains the same along the packet trip<br />• Broadcast MAC address is FF:FF:FF:FF:FF:FF<br />   ◇ A frame with this address is delivered to ALL hosts in the local network (within the same broadcast domain)<br /><br /><strong><h3>Switches</h3></strong><br />• Switches work with MAC addresses, and have multiple interfaces that requires them to keep a FORWARDING TABLE that binds one or more addresses to an interface<br />• Forwarding table is called CONTENT ADDRESSABLE MEMORY (CAM) table<br />• Main difference between one switch and another is packet forwarding speed<br /><br /><strong><h3>Segmentation</h3></strong><br />• Switches without VLAN's do not segment networks.  Routers do.<br />• Every interfcae of a router is attached to a different subnet with a different network address<br /><br /><strong><h3>Forwarding Tables</h3></strong><br />• Forwarding tables bind MAC addresses to interfaces<br />• Tables typically contain:<br />   ◇ MAC address<br />   ◇ Interfaces the switch can use to deliver packets to a specific MAC address<br />   ◇ Time to Live (TTL) - determines how long an entry stays in the table (CAM tables have finite sizes)<br />• Forwarding Table, or Content Addressable Memory table (CAM table) is stored in the device's RAM and is constantly refreshed with new information<br /><br /><strong><h3>CAM Table Population</h3></strong><br />• Switches learn new MAC addresses dynamically by inspecting headers of every new packet received, identifying new hosts<br />• While routers use complex protocols to update routing tables, switches use source MAC of the packets processed to decide which interface to use when forwarding packets<br />• Source MAC address is compared to the CAM table:<br />   ◇ If the MAC address is not in the table, the switch adds a new MAC-interface binding<br />   ◇ If the MAC-Interface is already in the table, the TTL is updated<br />   ◇ If the MAC is in the table but bound to another interface, the switch updates the table<br /><br /><strong><h3>ARP - Address Resolution Protocol</h3></strong><br />• When a host wants to send a packet to another host, it needs to know the IP and MAC address of the destination in order to build a proper packet<br />• Host needs to know MAC addresses of other network nodes, and can do so using ARP<br />• With ARP, a host can build the correct IP address &gt; MAC address binding<br />• One of the most fundamental protocols any modern network utilizes<br />• When Host A wants to send traffic to Host B, and it only knows the IP address of B:<br />   ◇ A builds an ARP request containing the IP addresses of B and FF:FF:FF:FF:FF:FF as destination address<br />      ▪ Fundamental because the switches will forward the packet to every host<br />   ◇ Every host on the network receives the request<br />   ◇ B replies with an ARP reply, telling A its MAC address<br />   ◇ A will save the IP - MAC binding in the ARP cache.  Further B traffic no longer requries an ARP round<br />• ARP cache entries have TTL, as the size of RAM is finite; host discards entries at power off or when the TTL expires<br />• To check ARP cache:<br />   ◇ arp -a on Windows<br />   ◇ arp on *nix systems<br />   ◇ ip neighbor on Linux<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div></div>
+</body></html>

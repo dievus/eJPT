@@ -1,0 +1,51 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>3.6 Burp Suite</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body><div class="main"><div class="tree">
+<p><strong>Index</strong></p>
+<p><a href="Penetration_Test_Student.html">Penetration Test Student</a></p>
+
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking.html">Module 2 | Networking</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.1_Protocols.html">2.1 Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.2_Internet_Protocol_(IP).html">2.2 Internet Protocol (IP)</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.3_Routing.html">2.3 Routing</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.4_Link_Layer_Devices_and_Protocols.html">2.4 Link Layer Devices and Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.5_TCP_and_UDP.html">2.5 TCP and UDP</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.6_Firewalls_and_Network_Defense.html">2.6 Firewalls and Network Defense</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.7_DNS.html">2.7 DNS</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.8_Wireshark.html">2.8 Wireshark</a></li>
+</ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications.html">Module 3 | Web Applications</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.1_Introduction.html">3.1 Introduction</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.2_HTTP_Protocol_Basics.html">3.2 HTTP Protocol Basics</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.3_HTTP_Cookies.html">3.3 HTTP Cookies</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.4_HTTP_Sessions.html">3.4 HTTP Sessions</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.5_Same_Origin_Policy.html">3.5 Same Origin Policy</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.6_Burp_Suite.html">3.6 Burp Suite</a></li>
+</ol>
+</ol>
+<p><a href="Commands.html">Commands</a></p>
+
+<ol>
+<li><a href="Commands--ARP.html">ARP</a></li>
+<li><a href="Commands--Burpsuite.html">Burpsuite</a></li>
+<li><a href="Commands--Netcat.html">Netcat</a></li>
+<li><a href="Commands--Netstat.html">Netstat</a></li>
+<li><a href="Commands--Routing_Table_Commands.html">Routing Table Commands</a></li>
+<li><a href="Commands--Wireshark.html">Wireshark</a></li>
+</ol>
+<p><a href="Hera_Labs_Notes.html">Hera Labs Notes</a></p>
+
+<ol>
+<li><a href="Hera_Labs_Notes--Hidden_Server_Workflow.html">Hidden Server Workflow</a></li>
+<li><a href="Hera_Labs_Notes--Data_Exfiltration.html">Data Exfiltration</a></li>
+</ol></div>
+<div class="page"><h1><b><u>3.6 Burp Suite</u></b></h1><br /><strong><h3>How does Burp Suite support my pentest career?</h3></strong><br /><br />• Web app analysis<br />• Finding vulnerabilities<br />• Attacks<br />• Burp Suite is one of the most used penetration testing tools<br /><br /><strong><h3>Intercepting Proxies</h3></strong><br /><br />• Any web application contains objects like scripts, images, style sheets/css, client and server-side intelligence<br />   ◇ Having tools that help study and analyze web application behavior is vital<br />• An intercepting proxy is a tool that lets you analyze and modify any request, and any request exchanged between an HTTP client and server<br />   ◇ By intercepting HTTP messages, pentesters can study web app behavior and test for vulnerabilities<br />• Most used web applications are:<br />   ◇ Intercepting proxy feature of Burp Suite<br />   ◇ ZAP<br />• Proxies are fundamental while analyzing web applications<br />• Do not confuse intercepting proxies with common web proxies, such as Squid<br />   ◇ Proxy servers have different purposes - bandwidth optimization, content filtering, ect.<br /><br /><img src="images\25-1.png" alt="images\25-1.png" /><br /><br /><strong><h3>Burp Suite Proxy</h3></strong><br /><br />• Burp Suite allows you to:<br />   ◇ Intercept of requests and responses between web server and browser<br />   ◇ Build requests manually<br />   ◇ Crawl a website by automatically visiting every page found in a sit<br />   ◇ Fuzz web apps by sending patterns of valid and invalid inputs to test behavior<br />   ◇ By using Burp, you can intercept and modify requests coming from your browser before being sent to the remote server<br />      ▪ Headers and body of a message can be modified manually or automatically<br />• Find me in Proxy &gt; Intercept<br />   ◇ Modify me in Proxy &gt; Options<br /><br /><strong><h3>Burp Proxy Configuration</h3></strong><br /><br />• You do not need to manually intercept and forward every request<br />   ◇ Even if you leave master interception off, Burp still collects information on the HTTP traffic coming to and from the browser<br />• Can check what Burp is collecting in two ways<br />   ◇ On the Proxy &gt; History tab<br /><img src="images\25-2.png" alt="images\25-2.png" /><br />   ◇ In the Target &gt; Site Map tab<br /><img src="images\25-3.png" alt="images\25-3.png" /><br /><br /><strong><h3>Burp Repeater</h3></strong><br /><br />• Allows you to manually build raw HTTP requests<br />• Can do the same thing by using other tools such as netcat or telnet, but Burp provides you:<br />   ◇ Syntax highlighting<br />   ◇ Raw and rendered responses<br />   ◇ Integration with other Burp tools<br />• To create a request, first set the target by clicking the target/pencil icon in right corner<br />   ◇ Set/specify target host, port, and HTTPS<br />   ◇ Define request by using the Request text area<br />      ▪ Each request must have at least an HTTP VERB (GET, POST, HEAD, ETC)<br />      ▪ Host: header<br />      ▪ FOLLOWED BY TWO EMPTY LINES<br />   ◇ When request is complete, click Go to send it to the server<br />      ▪ Burp will display the response in the Response panel<br />• An easier method to build requests is to intercept a browser request with the proxy and send it to the repeater function<br />   ◇ CTRL+R shortcut, or right click the request body and select Send to Repeater<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div></div>
+</body></html>

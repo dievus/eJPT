@@ -1,0 +1,51 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>3.3 HTTP Cookies</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body><div class="main"><div class="tree">
+<p><strong>Index</strong></p>
+<p><a href="Penetration_Test_Student.html">Penetration Test Student</a></p>
+
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking.html">Module 2 | Networking</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.1_Protocols.html">2.1 Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.2_Internet_Protocol_(IP).html">2.2 Internet Protocol (IP)</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.3_Routing.html">2.3 Routing</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.4_Link_Layer_Devices_and_Protocols.html">2.4 Link Layer Devices and Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.5_TCP_and_UDP.html">2.5 TCP and UDP</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.6_Firewalls_and_Network_Defense.html">2.6 Firewalls and Network Defense</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.7_DNS.html">2.7 DNS</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.8_Wireshark.html">2.8 Wireshark</a></li>
+</ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications.html">Module 3 | Web Applications</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.1_Introduction.html">3.1 Introduction</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.2_HTTP_Protocol_Basics.html">3.2 HTTP Protocol Basics</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.3_HTTP_Cookies.html">3.3 HTTP Cookies</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.4_HTTP_Sessions.html">3.4 HTTP Sessions</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.5_Same_Origin_Policy.html">3.5 Same Origin Policy</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.6_Burp_Suite.html">3.6 Burp Suite</a></li>
+</ol>
+</ol>
+<p><a href="Commands.html">Commands</a></p>
+
+<ol>
+<li><a href="Commands--ARP.html">ARP</a></li>
+<li><a href="Commands--Burpsuite.html">Burpsuite</a></li>
+<li><a href="Commands--Netcat.html">Netcat</a></li>
+<li><a href="Commands--Netstat.html">Netstat</a></li>
+<li><a href="Commands--Routing_Table_Commands.html">Routing Table Commands</a></li>
+<li><a href="Commands--Wireshark.html">Wireshark</a></li>
+</ol>
+<p><a href="Hera_Labs_Notes.html">Hera Labs Notes</a></p>
+
+<ol>
+<li><a href="Hera_Labs_Notes--Hidden_Server_Workflow.html">Hidden Server Workflow</a></li>
+<li><a href="Hera_Labs_Notes--Data_Exfiltration.html">Data Exfiltration</a></li>
+</ol></div>
+<div class="page"><h1><b><u>3.3 HTTP Cookies</u></b></h1><br /><strong><h3>HTTP Cookies</h3></strong><br /><br />• HTTP is a stateless protocol<br />   ◇ Websites cannot keep the state of a visit across different HTTP requests<br />   ◇ Every HTTP request is completely unrelated to the previous, and future<br />   ◇ Cookies were invented in 1994 to overcome this challenge<br />   ◇ Netscape created cookies to make HTTP stateful<br />• Cookies are the foundation of authorization of many applications<br />• Exploits often rely on stealing cookies<br />• Cookies are textual information installed by a website into the cookie jar of the browser<br />   ◇ Cookie Jar is the storage space where a browser stores cookies<br />• Servers can set a cookie via the Set-Cookie HTTP header field in a response message<br />• Cookie contains the following attributes:<br />   ◇ Actual content<br />   ◇ Expiration date<br />   ◇ Path<br />   ◇ Domain<br />   ◇ Optional flags<br />      ▪ HTTP only flag<br />      ▪ Secure Flag<br />      ▪ <img src="images\21-1.png" alt="images\21-1.png" /><br /><br /><strong><h3>Cookie Format</h3></strong><br />• Cookie Content <br />   ◇ ID=Value;<br />• Expiration Date<br />   ◇ expires=Thu, 21-May-2015 15:25:20 GMT;<br />• Path<br />   ◇ path=/example/path;<br />• Domain<br />   ◇ domain=.example.site;<br />• Flag-Setting Attribute<br />   ◇ HttpOnly;<br />   ◇ Secure;<br /><br /><strong><h3>Cookies Handling</h3></strong><br /><br />• Browsers use domain, path, expires and flags attributes to choose whether or not to send a cookie in a request<br />   ◇ Cookies sent only to the valid domain/path when they are not expired and according to their flags<br /><br /><strong><h3>Cookie Domain</h3></strong><br /><br />• Domain field and the path field set the scope of the cookie<br />• Broswer sends the cookie only if the request is for the correct domain<br />• When a server installs a cookie, it sets the domain field (e.g. elearnsecurity.com)<br />• Browser then will use that cookie for every request sent to that domain and ALL OF ITS SUBDOMAINS<br />• When a cookie has the domain attribute set to:<br />   ◇ domain=elearnsecurity.com <br />      ▪ or<br />   ◇ domain=.elearnsecurity.com<br />   ◇ The browser will send the cookie to:<br />      ▪ www.elearnsecurity.com<br />      ▪ whatever.subdomain.elearnsecurity.com<br />      ▪ elearnsecurity.com<br />• If a server does not specify the domain attribute, browser automatically sets the domain as the server domain, and sets the cookie host-only flag<br />   ◇ Means the cookie will be sent only to that precise hostname<br /><br /><strong><h3>Cookie Domain Example</h3></strong><br /><br /><img src="images\21-2.png" alt="images\21-2.png" /><br /><br /><img src="images\21-3.png" alt="images\21-3.png" /><br /><br /><img src="images\21-4.png" alt="images\21-4.png" /><br /><br /><strong><h3>Cookie Path</h3></strong><br /><br />• Path and domain attributes set the scope of a cookie<br />• Browser will send a cookie to the correct domain and any subpath of the path field value<br />• Example<br />   ◇ When a cookie has the path attribute of:<br />      ▪ path=/the/path<br />   ◇ The browser will send the cookie to the correct domain and to the resources in:<br />      ▪ /the/path<br />      ▪ /the/path/sub<br />      ▪ /the/path/sub/sub/sub/path<br />      ▪ But will not send it to /otherpath<br /><br /><strong><h3>Cookie Expires Attribute</h3></strong><br /><br />• Expires attribute sets validity time window of the cookie<br />   ◇ Browser will not send an expired cookie to a server<br />   ◇ Session cookies expire with the HTTP session<br /><br /><strong><h3>Cookie Http-Only Attribute</h3></strong><br /><br />• When a server installs a cookie into a client with http-only, client sets the http-only flag for that cookie<br />   ◇ Prevents JavaScript, Flash, Java, and any other non-HTML tech from reading the cookie<br />      ▪ Prevents cookie stealing via Cross Site Scripting XSS<br /><br /><strong><h3>Cookie Secure Attribute</h3></strong><br /><br />• Secure flag creates secure cookies<br />   ◇ Will only be sent over an HTTPS connection<br /><br /><strong><h3>Cookie Content</h3></strong><br /><br />• Cookies can carry many values; server can set multiple values<br />   ◇ Set-Cookie header specifies multiple KEY=VALUE pairs<br />      ▪ Set-Cookie: Username='john'; auth=1<br />         - Sets two values: one for username, one for password<br /><br /><strong><h3>Cookie Protocol</h3></strong><br /><br />• RFC6265 dictates cookie format, and how servers can install cookies, and how a client uses them<br />• Cookies are often installed during a login<br /><br /><br />• In this example, the browser sends a POST request with username and password<br /><br /><img src="images\21-5.png" alt="images\21-5.png" /><br /><br />• Server sends a response with a Set-Cookie header field, telling the browser to install the cookie<br /><br /><img src="images\21-6.png" alt="images\21-6.png" /><br /><br />• For every subsequent request, the browser considers:<br />   ◇ Domain<br />   ◇ Path<br />   ◇ Expiration<br />   ◇ Flags<br /><br /><img src="images\21-7.png" alt="images\21-7.png" /><br /><br />• If all checks pass, the browser will insert a cookie: header in the request<br /><br /><img src="images\21-8.png" alt="images\21-8.png" /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div></div>
+</body></html>

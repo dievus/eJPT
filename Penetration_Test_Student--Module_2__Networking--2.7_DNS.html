@@ -1,0 +1,51 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>2.7 DNS</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body><div class="main"><div class="tree">
+<p><strong>Index</strong></p>
+<p><a href="Penetration_Test_Student.html">Penetration Test Student</a></p>
+
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking.html">Module 2 | Networking</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.1_Protocols.html">2.1 Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.2_Internet_Protocol_(IP).html">2.2 Internet Protocol (IP)</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.3_Routing.html">2.3 Routing</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.4_Link_Layer_Devices_and_Protocols.html">2.4 Link Layer Devices and Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.5_TCP_and_UDP.html">2.5 TCP and UDP</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.6_Firewalls_and_Network_Defense.html">2.6 Firewalls and Network Defense</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.7_DNS.html">2.7 DNS</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.8_Wireshark.html">2.8 Wireshark</a></li>
+</ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications.html">Module 3 | Web Applications</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.1_Introduction.html">3.1 Introduction</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.2_HTTP_Protocol_Basics.html">3.2 HTTP Protocol Basics</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.3_HTTP_Cookies.html">3.3 HTTP Cookies</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.4_HTTP_Sessions.html">3.4 HTTP Sessions</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.5_Same_Origin_Policy.html">3.5 Same Origin Policy</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.6_Burp_Suite.html">3.6 Burp Suite</a></li>
+</ol>
+</ol>
+<p><a href="Commands.html">Commands</a></p>
+
+<ol>
+<li><a href="Commands--ARP.html">ARP</a></li>
+<li><a href="Commands--Burpsuite.html">Burpsuite</a></li>
+<li><a href="Commands--Netcat.html">Netcat</a></li>
+<li><a href="Commands--Netstat.html">Netstat</a></li>
+<li><a href="Commands--Routing_Table_Commands.html">Routing Table Commands</a></li>
+<li><a href="Commands--Wireshark.html">Wireshark</a></li>
+</ol>
+<p><a href="Hera_Labs_Notes.html">Hera Labs Notes</a></p>
+
+<ol>
+<li><a href="Hera_Labs_Notes--Hidden_Server_Workflow.html">Hidden Server Workflow</a></li>
+<li><a href="Hera_Labs_Notes--Data_Exfiltration.html">Data Exfiltration</a></li>
+</ol></div>
+<div class="page"><h1><b><u>2.7 DNS</u></b></h1><br /><strong><h3>Domain Naming System</h3></strong><br /><br />• Domain Name System, or DNS, primarly converts human-readable names like www.elearnsecurity.com to IP addresses, and is a fundamental support protocol for the internet and computer networks in general.  <br />• DNS name such as www.elearnsecurity.com or members.elearnsecurity.com can be broken down into the following parts:<br />   ◇ Top Level Domain (TLD)<br />   ◇ Domain<br />   ◇ Subdomain<br />   ◇ Host<br />• members.elearnsecurity.com<br />   ◇ members = host<br />   ◇ elearnsecurity = domain<br />   ◇ .com = TLD<br />• www.sub.domain.com<br />   ◇ www. = host<br />   ◇ sub = subdomain<br />   ◇ domain = domain<br />   ◇ .com = TLD<br />• Name resolution is performed by resolvers, which are servers that contact the top level domain DNS servers and follow the hierarchy of the DNS name to resolve the name of a host<br />• Resolvers are DNS servers provided by your ISP or publicly available like OpenDNS or Google DNS<br />• To convert a DNS name to an IP address, the operating system must contact a resolver server to perform the DNS resolution<br />• Resolver breaks down the DNS name in its parts and uses them to convert a DNS name to an IP address<br />• DNS Resolution Protocol<br />   ◇ Resolver contacts one of the root name servers; these contain info about top level domains<br />   ◇ It asks the TLD name server what's the name server that can give information (authoritative name server) about the domain the resolver is looking for<br />   ◇ If there are one or more subdomains, step 2 is performed again on the authoritative DNS server for every domain<br />   ◇ Finally, resolver asks for the name resolution of the host part<br />• DNS can also convert IP address to a DNS name via Reverse DNS Resolution</div></div>
+</body></html>

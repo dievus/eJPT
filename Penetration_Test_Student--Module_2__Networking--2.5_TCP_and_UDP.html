@@ -1,0 +1,51 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>2.5 TCP and UDP</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body><div class="main"><div class="tree">
+<p><strong>Index</strong></p>
+<p><a href="Penetration_Test_Student.html">Penetration Test Student</a></p>
+
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking.html">Module 2 | Networking</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.1_Protocols.html">2.1 Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.2_Internet_Protocol_(IP).html">2.2 Internet Protocol (IP)</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.3_Routing.html">2.3 Routing</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.4_Link_Layer_Devices_and_Protocols.html">2.4 Link Layer Devices and Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.5_TCP_and_UDP.html">2.5 TCP and UDP</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.6_Firewalls_and_Network_Defense.html">2.6 Firewalls and Network Defense</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.7_DNS.html">2.7 DNS</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.8_Wireshark.html">2.8 Wireshark</a></li>
+</ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications.html">Module 3 | Web Applications</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.1_Introduction.html">3.1 Introduction</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.2_HTTP_Protocol_Basics.html">3.2 HTTP Protocol Basics</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.3_HTTP_Cookies.html">3.3 HTTP Cookies</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.4_HTTP_Sessions.html">3.4 HTTP Sessions</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.5_Same_Origin_Policy.html">3.5 Same Origin Policy</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.6_Burp_Suite.html">3.6 Burp Suite</a></li>
+</ol>
+</ol>
+<p><a href="Commands.html">Commands</a></p>
+
+<ol>
+<li><a href="Commands--ARP.html">ARP</a></li>
+<li><a href="Commands--Burpsuite.html">Burpsuite</a></li>
+<li><a href="Commands--Netcat.html">Netcat</a></li>
+<li><a href="Commands--Netstat.html">Netstat</a></li>
+<li><a href="Commands--Routing_Table_Commands.html">Routing Table Commands</a></li>
+<li><a href="Commands--Wireshark.html">Wireshark</a></li>
+</ol>
+<p><a href="Hera_Labs_Notes.html">Hera Labs Notes</a></p>
+
+<ol>
+<li><a href="Hera_Labs_Notes--Hidden_Server_Workflow.html">Hidden Server Workflow</a></li>
+<li><a href="Hera_Labs_Notes--Data_Exfiltration.html">Data Exfiltration</a></li>
+</ol></div>
+<div class="page"><h1><b><u>2.5 TCP and UDP</u></b></h1><br /><strong><h3>TCP</h3></strong><br />• Guaranteed packet delivery<br />• Connection oriented<br />• Most commonly used transport protocol on the internet.<br />• Lower Throughput<br /><br /><strong><h3>UDP</h3></strong><br />• Packet delivery not guaranteed<br />• Connectionless<br />• Faster than TCP, as it provides better throughput/number of packets per second<br />• Used by multimedia applications that can tolerate packet loss but are intensive<br />   ◇ VoIP, Video Streaming, Video Gaming<br /><br /><strong><h3>Ports</h3></strong><br />• Used to identify a single network process on a machine<br />• In order to unequivocally identify a process on a network, the &lt;IP&gt;:&lt;PORT&gt;pair has to be known<br />• Common/Well-Known Ports range from 0-1023, or the first 1,024 ports<br />   ◇ SMTP 25<br />   ◇ SSH 22<br />   ◇ POP3 110<br />   ◇ IMAP 143<br />   ◇ HTTP 80<br />   ◇ HTTPS 443<br />   ◇ NETBIOS 137, 138, 139<br />   ◇ SFTP 115<br />   ◇ Telnet 23<br />   ◇ FTP 21<br />   ◇ RDP 3389<br />   ◇ MySQL 3306<br />   ◇ MS SQL Server 1433<br />• A daemon is a program that runs a service; administrators change daemon configurations, changing the port the service listens to for connection.  Makes service recognition more difficult for attackers<br />   ◇ For example, FTP can be configured to use 55,555 rather than Port 21.<br /><br /><strong><h3>Netstat</h3></strong><br />• To check listening ports and the current TCP connections on a host, use:<br />   ◇ netstat -ano on Windows<br />   ◇ netstat -tunp on Linux<br />   ◇ netstat -p tcp -p udp together with lsof -n -i4TCP -i4UDP on OSX<br />• Can also use TCPView from Sysinternals<br />   ◇ Shows process name, ID, protocol, local and remote addresses, local and remove ports, state of connection<br /><br /><strong><h3>TCP Three Way Handshake</h3></strong><br />• Used to establish a connection between two hosts running TCP<br />• Steps in the handshake are used to synchronize the sequence and acknowledgement numbers between server and client<br />• Header fields involved in the handshake include<br />   ◇ Sequence Number<br />   ◇ Acknowledgement Numbers<br />   ◇ SYN and ACK flags<br />• During the first step, client sends a TCP packet to the server with SYN flag enabled and a random sequence number<br />• Server replies by sending a packet with both the SYN and ACK flag set and another random sequence number<br />   ◇ ACK number is always a simple increment of the SYN number sent by the client<br />• Finally, client completes the synchronization by sending an ACK packet<br /> </div></div>
+</body></html>

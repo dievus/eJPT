@@ -1,0 +1,51 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>3.2 HTTP Protocol Basics</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body><div class="main"><div class="tree">
+<p><strong>Index</strong></p>
+<p><a href="Penetration_Test_Student.html">Penetration Test Student</a></p>
+
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking.html">Module 2 | Networking</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.1_Protocols.html">2.1 Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.2_Internet_Protocol_(IP).html">2.2 Internet Protocol (IP)</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.3_Routing.html">2.3 Routing</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.4_Link_Layer_Devices_and_Protocols.html">2.4 Link Layer Devices and Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.5_TCP_and_UDP.html">2.5 TCP and UDP</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.6_Firewalls_and_Network_Defense.html">2.6 Firewalls and Network Defense</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.7_DNS.html">2.7 DNS</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.8_Wireshark.html">2.8 Wireshark</a></li>
+</ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications.html">Module 3 | Web Applications</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.1_Introduction.html">3.1 Introduction</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.2_HTTP_Protocol_Basics.html">3.2 HTTP Protocol Basics</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.3_HTTP_Cookies.html">3.3 HTTP Cookies</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.4_HTTP_Sessions.html">3.4 HTTP Sessions</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.5_Same_Origin_Policy.html">3.5 Same Origin Policy</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.6_Burp_Suite.html">3.6 Burp Suite</a></li>
+</ol>
+</ol>
+<p><a href="Commands.html">Commands</a></p>
+
+<ol>
+<li><a href="Commands--ARP.html">ARP</a></li>
+<li><a href="Commands--Burpsuite.html">Burpsuite</a></li>
+<li><a href="Commands--Netcat.html">Netcat</a></li>
+<li><a href="Commands--Netstat.html">Netstat</a></li>
+<li><a href="Commands--Routing_Table_Commands.html">Routing Table Commands</a></li>
+<li><a href="Commands--Wireshark.html">Wireshark</a></li>
+</ol>
+<p><a href="Hera_Labs_Notes.html">Hera Labs Notes</a></p>
+
+<ol>
+<li><a href="Hera_Labs_Notes--Hidden_Server_Workflow.html">Hidden Server Workflow</a></li>
+<li><a href="Hera_Labs_Notes--Data_Exfiltration.html">Data Exfiltration</a></li>
+</ol></div>
+<div class="page"><h1><b><u>3.2 HTTP Protocol Basics</u></b></h1><br /><strong><h3>HTTP Protocol Basics</h3></strong><br /><br />• HTTP is the most used application protocol on the internet<br />• Client, usually a web browser, connects to a web server such as MS IIS or Apache HTTP.  <br />• During an HTTP communication, the client and server exchange messages<br />   ◇ Client sends requests to the server and gets back a response<br />  <img src="images\20-1.png" alt="images\20-1.png" /><br /><br /><br />• HTTP works on top of TCP protocol<br />   ◇ First a TCP connection is established<br />   ◇ Client sends a request and waits for answer<br />   ◇ Server processing request sends back its answer, providing a status code and appropriate data<br /><img src="images\20-2.png" alt="images\20-2.png" /><br /><br /><strong><h3>HTTP Requests</h3></strong><br /><br />• HTTP Message format<br />   ◇ Headers\r\n<br />   ◇ \r\n<br />   ◇ Message Body\r\n<br />• To end lines in HTTP, have to use the \r (carriage return) and \n (newline) characters<br />• Header contains a request followed by header fields<br />   ◇ Every header field has the following formation<br />      ▪ Header-name: header value<br />   ◇ <img src="images\20-3.png" alt="images\20-3.png" /><br /><br />• GET = HTTP verb of the request<br />   ◇ HTTP verb, or request method, states the type of request<br />   ◇ GET is used when opening web resources<br />   ◇ There are many HTTP methods/verbs<br />      ▪ PUT<br />      ▪ TRACE<br />      ▪ HEAD<br />      ▪ POST<br />• After the HTTP verb is located a path (/) and protocol version (HTTP/1.1)<br />   ◇ Tells the server which resource the browser is requestiong<br />• Host: header field specifies internet hostname and port number of resource being requested<br />   ◇ Web servers can host multiple websites.  Header field tells the server which site is requested<br />   ◇ Host Value is obtained from the URL<br />• User-Agent: tells the server what client software is issuing the request<br />   ◇ Could be:<br />      ▪ Firefox<br />      ▪ Internet Explorer<br />      ▪ Safari<br />      ▪ Opera<br />      ▪ Chrome<br />      ▪ Mobile App<br />   ◇ Reveals to the server the operating system version<br />• Accept: browser sends the Accept header field to specify which document type it is expecting in response<br />• Accept-Language: browser can ask for a specific human language in the response<br />• Accept-Encoding: works like Accept, but restricts the content encoding, not the content itself<br />   ◇ In the above example, browser accepts two types of compression - gzip and deflate<br />• Connection: header field allows the sender to specify options that are desired for that particular connection<br />   ◇ Future communications with the server will reuse the current connection in the above example<br /><br /><strong><h3>HTTP Response</h3></strong><br /><br />• When a server receives a request, it processes it and sends and HTTP response to the client in return<br />   ◇ Response has its own format<br />   ◇ <img src="images\20-4.png" alt="images\20-4.png" /><br /><br />   ◇ Note the response has a message body.  Header and message body are separated by two empty lines (\r\n\r\n)<br />In reference to the above HTTP response:<br /><br />• HTTP/1.1 200 OK: Status-line, which consists of the protocol version, followed by numeric status code and relative textual meaning; common codes include:<br />   ◇ 200 OK - resource found<br />   ◇ 301 Moved Permanently - requested resource has been assigned a new permanent URL<br />   ◇ 302 Found - resource is temporarily under another resource<br />   ◇ 403 Forbidden - client does not have enough privileges and the server refuses to fulfill the request<br />   ◇ 404 Not Found - server cannot find a resource matching the request<br />   ◇ 500 Internal Server Error - server does not support the functionality required to fulfill the request<br />• Date: represents the date and time at which the message was originated<br />• Cache-Control: server informs the client about cached content<br />   ◇ Using cached content saves bandwidth, as it prevents the client from re-requesting unmodified content<br />• Content-Type: lets the client know how to interpret the body of the message<br />• Content-Encoding: extends content-type; in the above, the message body is compressed with gzip<br />• Server: header field contains the header of the server that generated the content<br />   ◇ Optional field is very useful duing pentest to identify the software running on a server<br />• Content-Length: indicates length, in bytes, of the message body<br /><br /><strong><h3>HTTPS</h3></strong><br /><br />• HTTP is insecure; everything operates in clear text and can be easily intercepted or modified<br />   ◇ HTTP does not provide strong authentication between parties<br />• HTTP Secure (HTTPS), or HTTP over SSL/TLS, is a security method to run HTTL over SSL/TLS encryption<br />• Layering technique provides confidentiality, integrity, and authentication to the HTTP protocol<br />• When using HTTPS:<br />   ◇ Attackers cannot sniff application layer communication<br />   ◇ Cannot alter application layer data<br />   ◇ Client can tell the real identity of the server, and sometimes, vice versa<br />• HTTPS offers encryption, which means that a network adjacent user can sniff traffic, but cannot know:<br />   ◇ HTTP Request headers, body, or target domain<br />   ◇ HTTP Response headers or body<br />• On the other hand, when inspecting HTTPS, on cannot know what domain is contacted and what data is exchanged<br />• Network adjacent user might recognize:<br />   ◇ Target IP address<br />   ◇ Target port<br />   ◇ DNS or similar protocols may disclos4e which domain user tries to resolve<br />• Does not protect against web application flaws<br />   ◇ All attacks against an application occur regardless of SSL/TLS<br />   ◇ Extra encryption layer protects data exchanged between the client and server; does not protect against attacks against the application itself<br />• Attacks such as XSS and SQL injection still work <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div></div>
+</body></html>

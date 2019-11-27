@@ -1,0 +1,51 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>3.4 HTTP Sessions</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body><div class="main"><div class="tree">
+<p><strong>Index</strong></p>
+<p><a href="Penetration_Test_Student.html">Penetration Test Student</a></p>
+
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking.html">Module 2 | Networking</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.1_Protocols.html">2.1 Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.2_Internet_Protocol_(IP).html">2.2 Internet Protocol (IP)</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.3_Routing.html">2.3 Routing</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.4_Link_Layer_Devices_and_Protocols.html">2.4 Link Layer Devices and Protocols</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.5_TCP_and_UDP.html">2.5 TCP and UDP</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.6_Firewalls_and_Network_Defense.html">2.6 Firewalls and Network Defense</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.7_DNS.html">2.7 DNS</a></li>
+<li><a href="Penetration_Test_Student--Module_2__Networking--2.8_Wireshark.html">2.8 Wireshark</a></li>
+</ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications.html">Module 3 | Web Applications</a></li>
+<ol>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.1_Introduction.html">3.1 Introduction</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.2_HTTP_Protocol_Basics.html">3.2 HTTP Protocol Basics</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.3_HTTP_Cookies.html">3.3 HTTP Cookies</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.4_HTTP_Sessions.html">3.4 HTTP Sessions</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.5_Same_Origin_Policy.html">3.5 Same Origin Policy</a></li>
+<li><a href="Penetration_Test_Student--Module_3__Web_Applications--3.6_Burp_Suite.html">3.6 Burp Suite</a></li>
+</ol>
+</ol>
+<p><a href="Commands.html">Commands</a></p>
+
+<ol>
+<li><a href="Commands--ARP.html">ARP</a></li>
+<li><a href="Commands--Burpsuite.html">Burpsuite</a></li>
+<li><a href="Commands--Netcat.html">Netcat</a></li>
+<li><a href="Commands--Netstat.html">Netstat</a></li>
+<li><a href="Commands--Routing_Table_Commands.html">Routing Table Commands</a></li>
+<li><a href="Commands--Wireshark.html">Wireshark</a></li>
+</ol>
+<p><a href="Hera_Labs_Notes.html">Hera Labs Notes</a></p>
+
+<ol>
+<li><a href="Hera_Labs_Notes--Hidden_Server_Workflow.html">Hidden Server Workflow</a></li>
+<li><a href="Hera_Labs_Notes--Data_Exfiltration.html">Data Exfiltration</a></li>
+</ol></div>
+<div class="page"><h1><b><u>3.4 HTTP Sessions</u></b></h1><br /><strong><h3>HTTP Sessions</h3></strong><br /><br />• Occasionally developers prefer to store information on the server instead of client<br />   ◇ happens to hide the application logic, or just avoid the back and forth data transmission typical of cookies<br />• Sessions allow websites to store variables specific for a given visit on the server side<br />• Each session is identified by a session id, or token, which the server assigns to a client<br />• Client then presents this ID for each subsequent request to be recognized by the server<br />• Using the session ID, server retrieves the state of the client and all variables associated with it<br />   ◇ Server stores session ID's inside text files in its storage.<br /><img src="images\22-1.png" alt="images\22-1.png" /><br /><br /><strong><h3>Session Cookies</h3></strong><br /><br />• Session cookies contain a single parameter value pair referring to the session<br /><img src="images\22-2.png" alt="images\22-2.png" /><br /><br /><br />• Websites install session cookies in different ways<br />   ◇ Websites running PHP install session cookies utilizing “PHPSESSID”<br />   ◇ JSP websites install session cookies utilizing “JSESSIONID”<br />   ◇ Each dev language has its own default session parameter name<br />• If needed, servers install session cookies after a browser performs an activity, such as:<br />   ◇ Opening a page<br />   ◇ Changing web application settings<br />   ◇ Logging in<br />• Browser then used the cookie in follow on requests<br />   ◇ Session could contain many variables, so sending a small cookie keeps bandwidth low<br /><br /><strong><h3>Session Cookie Example</h3></strong><br /><br />• Client uses a login form to POST the user's credentials<br /><br /><img src="images\22-3.png" alt="images\22-3.png" /><br /><br />• Server sends back a response with a Set-cookie header field<br />   ◇ Contains the session ID<br /><br /><img src="images\22-4.png" alt="images\22-4.png" /><br /><br />• Browser sends back the cookie according to the cookie protocol, sending the session ID<br /><br /><img src="images\22-5.png" alt="images\22-5.png" /><br /><br /><strong><h3>GET Requests</h3></strong><br /><br />• Session IDs can be transmitted via GET requests as well<br /><br /><img src="images\22-6.png" alt="images\22-6.png" /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div></div>
+</body></html>
